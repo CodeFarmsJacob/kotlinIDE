@@ -1,7 +1,22 @@
-Upload current Kotlin file to GitHub;
 
-Update current file; 
+; == not started yet.
 
-Reupload file;
+-- == started, but early stages.
 
-Repeat%
+-= == good start.
+
+= == almost done.
+
++ == done.
+
+++ == near completion, moving on to other TODO.
+
+
+Upload current Kotlin file to GitHub -- 
+
+Get a way to recognize the text entered;
+
+Add %SAVE% and %COMPILE% buttons;
+
+
+
