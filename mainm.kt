@@ -69,16 +69,24 @@ private class SaveClick : ActionListener {
             var writer = FileWriter(leFile, false)
             TextTextArea.write(writer)
         }
-        else {
+    if(!fileDebounce) {
             var newFrame = JFrame("Save File")
             var fie = fileSelect.showSaveDialog(newFrame)
             newFrame.isVisible = true
-            println("InsertTestPathToTheFileSelect")
-
+            println(fileSelect.selectedFile)
+        newFrame.isVisible = false
+        saveThing(fileSelect.selectedFile)
         }
     }
 }
+fun saveThing(file : File) {
 
+    file.bufferedWriter().use{ out->
+        out.write(TextTextArea.text)
+    }
+    var writer = FileWriter(file, false)
+    TextTextArea.write(writer)
+}
 private class CompileClick : ActionListener {
 
     override fun actionPerformed(e: ActionEvent) {
