@@ -12,7 +12,7 @@ var fileDebounce : Boolean = false
 var frame = JFrame("Kotlin IDE")
 var fileSelect = JFileChooser()
 
-var TextTextArea = JTextArea()
+var TextTextArea = JTextArea(45, 50)
 
 var fileButton = JButton("Open File").apply { addActionListener(FileClick()) }
 var compileButton = JButton("Compile").apply { addActionListener(CompileClick()) }
@@ -21,7 +21,7 @@ var saveButton = JButton("Save").apply {
     addActionListener(SaveClick())
 }
 //var compileKbutton = JButton("Compile in Kotlin ONLY").apply {addActionListener(compileKClick())}
-var scroll = JScrollPane(TextTextArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER)
+var scroll = JScrollPane(TextTextArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER)
 private class InsertMain : AbstractAction()  {
 
     override fun actionPerformed(e: ActionEvent) {
@@ -39,7 +39,7 @@ fun gui() {
 
 
     }
-    TextTextArea.preferredSize = Dimension( 500, 800)
+
     saveButton.preferredSize = Dimension(90, 20)
     compileButton.preferredSize = Dimension(90, 20)
     fileButton.preferredSize = Dimension(90, 20)
@@ -92,6 +92,22 @@ private class CompileClick : ActionListener {
     override fun actionPerformed(e: ActionEvent) {
 
     println("Compile Initialized")
+        var newFrame = JFrame("Save File")
+        var fie = fileSelect.showSaveDialog(newFrame)
+        newFrame.isVisible = true
+        var toUseyeet = fileSelect.selectedFile
+        var toUseYEEET = System.getProperty("user.name")
+        println(fileSelect.selectedFile)
+        newFrame.isVisible = false
+        saveThing(fileSelect.selectedFile)
+        File("C:/tmp/compileKotlin.bat").printWriter().use { out->
+            out.println("\"%ProgramFiles%/kotlinc/bin/kotlinc\" -include-runtime $toUseyeet -d \"C:/Users/$toUseYEEET/Desktop/output.jar\"")
+
+            out.println("del compileKotlin.bat")
+        }
+
+        Runtime.getRuntime().exec("cmd.exe start /C C:/tmp/compileKotlin.bat")
+
 
     }
 }
