@@ -101,7 +101,7 @@ private class CompileClick : ActionListener {
         newFrame.isVisible = false
         saveThing(fileSelect.selectedFile)
         File("C:/tmp/compileKotlin.bat").printWriter().use { out->
-            out.println("\"%ProgramFiles%/kotlinc/bin/kotlinc\" -include-runtime $toUseyeet -d \"C:/Users/$toUseYEEET/Desktop/output.jar\"")
+            out.println("\"%Desktop%/kotlinc/bin/kotlinc\" -include-runtime $toUseyeet -d \"C:/Users/$toUseYEEET/Desktop/output.jar\"")
 
             out.println("del compileKotlin.bat")
         }
