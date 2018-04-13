@@ -49,8 +49,10 @@ fun gui() {
     frame.add(saveButton)
     frame.add(scroll)
     TextTextArea.lineWrap = true
-    TextTextArea.inputMap.put(KeyStroke.getKeyStroke(" shift F1"), "doNothing")
+    TextTextArea.inputMap.put(KeyStroke.getKeyStroke("shift F1"), "doNothing")
     TextTextArea.actionMap.put("doNothing", InsertMain())
+    TextTextArea.inputMap.put(KeyStroke.getKeyStroke("shift F2"), "IDoNotKnowJacob")
+    TextTextArea.actionMap.put("IDoNotKnowJacob", NewStage())
     frame.apply { isVisible = true }
 }
 
@@ -146,6 +148,12 @@ private class FileClick : ActionListener {
     }
 }
 
+private class IDoNotKnowJacob : AbstractAction()  {
+
+    override fun actionPerformed(e: ActionEvent) {
+        println("Creating new stage")
+    }
+}
 
 fun main(args: Array<String>) {
     gui()
